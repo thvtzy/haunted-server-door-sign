@@ -10,8 +10,14 @@ def read_sign() -> str:
     return SIGN_FILE.read_text(encoding="utf-8").strip()
 
 
+def framed(text: str) -> str:
+    """Render the line the way it hangs on the door: boxed, like a real sign."""
+    bar = "+" + "-" * (len(text) + 2) + "+"
+    return f"{bar}\n| {text} |\n{bar}"
+
+
 def main() -> None:
-    print(read_sign())
+    print(framed(read_sign()))
 
 
 if __name__ == "__main__":
